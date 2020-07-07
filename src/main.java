@@ -17,16 +17,20 @@ public class main {
         nube.fillCloud(5);
         nube.showCloud();
         System.out.println("Size:" +nube.cloud.size());
-        Algoritmos alg = new Algoritmos();
-        System.out.println("Perimetro min:" +alg.exhaustivo(nube.cloud));
 
+        Algoritmos alg = new Algoritmos();
+        //System.out.println("Perimetro min Exhaustivo:" +alg.exhaustivo(nube.cloud));
+
+        System.out.println("Perimetro min DyV:" +alg.divideVenceras(nube.cloud));
+/*
         HeapSort heap = new HeapSort();
         ArrayList<Point.Double> sorted = new ArrayList<>();
         sorted = heap.heapSort(nube.cloud);
         for (int i = 0; i < sorted.size(); i++)
             System.out.println(sorted.get(i));
 
-
+*/
+/*
         Point p1 = new Point(0,0);
         Point p2 = new Point(1,3);
         Point p3 = new Point(1,5);
@@ -38,6 +42,6 @@ public class main {
         Cloud aux = new Cloud();
         System.out.println("Perimetro min P: "+aux.perimetroMin(p1,p2,p3));
         System.out.println("Perimetro min Q: "+aux.perimetroMin(q1,q2,q3));
-
+*/
     }
 }
