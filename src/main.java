@@ -14,12 +14,14 @@ public class main {
 
          */
 
-        nube.fillCloud(5);
+        nube.fillCloud(10);
         nube.showCloud();
         System.out.println("Size:" +nube.cloud.size());
 
         Algoritmos alg = new Algoritmos();
-        //System.out.println("Perimetro min Exhaustivo:" +alg.exhaustivo(nube.cloud));
+
+        System.out.println("Perimetro min Exhaustivo:" +alg.exhaustivo(nube.cloud));
+        System.out.println("##################################");
 
         System.out.println("Perimetro min DyV:" +alg.divideVenceras(nube.cloud));
 /*
