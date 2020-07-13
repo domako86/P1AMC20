@@ -1,0 +1,31 @@
+import java.awt.geom.Point2D;
+import java.util.ArrayList;
+
+public class Cloud {
+
+    public ArrayList<Point.Double> cloud = new ArrayList<>();
+
+
+    public void fillCloud (int size){
+        for (int i = 0; i < size; i++){
+            Point p = new Point();
+            cloud.add(p.rndCoordenada(100)); //Random coord to set range 1-100
+        }
+    }
+
+    public void showCloud(){
+        for (int i = 0; i < cloud.size(); i++){
+            System.out.println("Punto["+i+"] =("+cloud.get(i).getX()+","+cloud.get(i).getY()+")");
+        }
+    }
+
+    public double perimetroMin(Point.Double p1, Point.Double p2, Point.Double p3){
+        double perimetro = 0;
+        Point aux = new Point();
+        perimetro += aux.distanciaEuclidea(p1,p2);
+        perimetro += aux.distanciaEuclidea(p1,p3);
+        perimetro += aux.distanciaEuclidea(p2,p3);
+        //System.out.println("Test PerimetroMin: "+perimetro);
+        return perimetro;
+    }
+}
