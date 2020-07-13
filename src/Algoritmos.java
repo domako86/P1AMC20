@@ -56,17 +56,6 @@ public class Algoritmos {
         return pmin;
     }
 
-/*
-    public double divideVenceras(ArrayList<Point.Double> nube){
-        HeapSort heap = new HeapSort();
-        ArrayList<Point.Double> sorted = new ArrayList<>();
-        sorted = heap.heapSort(nube);
-        for (int i = 0; i < sorted.size(); i++)
-            System.out.println(sorted.get(i));
-
-        return -1;
-    }
-*/
 
     public double divideVenceras(ArrayList<Point.Double> nube){
         Instant startHeap = Instant.now();
@@ -143,10 +132,7 @@ public class Algoritmos {
 
             }
         }
-        //Instant finishDyV = Instant.now();
-        //long timeElapsedDyV = Duration.between(startDyV,finishDyV).toMillis();
-        //System.out.println("Time Elapsed DyV: " +timeElapsedDyV+ "ms");
-        //return -1;
+
     }
 
     public ArrayList<Point.Double> franja (ArrayList<Point.Double> nube, double distIzq, double distDcha){
@@ -163,95 +149,5 @@ public class Algoritmos {
         return franja;
     }
 
-/*
-public double DyV(ArrayList<Point.Double> nube, int inicio, int fin) {
-        int centro = (inicio + fin)/2; // recoge el centro para dividir
-        Point aux = new Point();
-        //si quedan 3 puntos, calculamos el minimo de la distancia entre los 3 puntos
-        if ((fin - inicio)+1 == 3) {
 
-            double dis1, dis2, dis3;
-            dis1 = aux.distanciaEuclidea(nube.get(inicio), nube.get(inicio + 1));
-            dis2 = aux.distanciaEuclidea(nube.get(inicio + 1), nube.get(fin));
-            dis3 = aux.distanciaEuclidea(nube.get(inicio), nube.get(fin));
-
-            if (dis1 < dis2) {// cmp dis 1 y 2
-                setPunt(nube.get(inicio), nube.get(inicio + 1));
-                return dis1;
-            } else if (dis2 < dis3) {// cmp dis 2 y 3
-                setPunt(nube.get(inicio + 1), nube.get(fin));
-                return dis2;
-            } else if (dis1 < dis3) {// cmp dis 1y 3
-                setPunt(nube.get(inicio), nube.get(inicio + 1));
-                return dis1;
-            } else {// si no dist3 mayor
-                setPunt(nube.get(inicio), nube.get(fin));
-                return dis3;
-            }
-
-        //si solo quedan 2, devuelve la distancia entre ellos
-        } else if ((fin - inicio)+1 == 2) {
-            setPunt(nube.get(inicio), nube.get(fin));
-            return aux.distanciaEuclidea(nube.get(inicio), nube.get(fin));
-        //si no es ningun caso base, llamamos de nuevo a divide y venceras
-        } else {
-            double dist1, dist2, dist3;
-            dist1 = DyV(nube, inicio, centro);
-            //coge puntos y loguarda en dista1
-            dista1 = getpoint();
-            dist2 = DyV(nube, centro + 1, fin);
-            //coge puntos y loguarda en dista2
-            dista2 = getpoint();
-            dist3 = divide(nube, Math.min(dist1, dist2), inicio, fin);
-            //coge puntos y loguarda en dista3
-            dista3 = getpoint();
-            //compara cuan el la menor distancia y escribe las corrdenadas de este
-            if (dist1 < dist2) {// cmp dis 1 y 2
-                setPunt(dista1[0], dista1[1]);
-                return dist1;
-            } else if (dist2 < dist3) {// cmp dis 2 y 3
-                setPunt(dista2[0], dista2[1]);
-                return dist2;
-            } else if (dist1 < dist3) {// cmp dis 1y 3
-                setPunt(dista1[0], dista1[1]);
-                return dist1;
-            } else {// si no dist3 mayor
-                setPunt(dista3[0], dista3[1]);
-                return dist3;
-            }
-        }
-    }
-
-    public void setPunt(Point.Double a, Point.Double b) {
-        distaaux[0] = a;
-        distaaux[1] = b;
-    }
-
-    public Point.Double[] getpoint() {
-        return distaaux;
-    }
-
-    public double divide (ArrayList<Point.Double> nube, double disminima, int ini, int fin){
-        int centro = (ini + fin) / 2;
-        int centroEnd = ((ini + fin) / 2) + 1;
-        Point aux = new Point();
-        while ((centro >= ini) && Math.abs(nube.get(centro).x - nube.get(centroEnd).x) < disminima) { //centro izq
-            while ((centroEnd <= fin) && Math.abs(nube.get(centro).x - nube.get(centroEnd).x) < disminima) {//centro der
-                // si la distancia entre los dospuntos es menor a la minima
-                if ((aux.distanciaEuclidea(nube.get(centro), nube.get(centroEnd)) <
-                        disminima)&& (!(nube.get(centro).equals(nube.get(centroEnd)))) && Math.abs(nube.get(centro).y - nube.get(centroEnd).y) < disminima ) {
-                    //si los 2 puntos son iguales, no coje que es la distancia minima
-                    if ((!(nube.get(centro).equals(nube.get(centroEnd)))) && Math.abs(nube.get(centro).y - nube.get(centroEnd).y) < disminima) {
-                        disminima = aux.distanciaEuclidea(nube.get(centro), nube.get(centroEnd));
-                    }
-                }
-                centroEnd++;
-            }
-            centro--;
-            centroEnd = ((ini + fin) / 2) + 1;
-        }
-        return disminima;
-    }
-
-*/
 }
