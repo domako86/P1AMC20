@@ -1,6 +1,5 @@
+package TrioPuntos;
 
-
-import java.awt.*;
 import java.util.Random;
 
 import static java.lang.Math.sqrt;

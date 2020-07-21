@@ -1,4 +1,5 @@
-import java.awt.geom.Point2D;
+package TrioPuntos;
+
 import java.util.ArrayList;
 
 public class Cloud {

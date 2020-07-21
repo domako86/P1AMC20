@@ -1,9 +1,8 @@
-import java.awt.geom.Point2D;
-import java.lang.reflect.Array;
+package TrioPuntos;
+
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Algoritmos {
     //private casos caso;
@@ -16,7 +15,7 @@ public class Algoritmos {
 
     public Algoritmos() {
         //this.caso = c;
-        //distaaux = new Point.Double[2];
+        //distaaux = new TrioPuntos.Point.Double[2];
         dista1 = new Point.Double[2];
         dista2 = new Point.Double[2];
         dista3 = new Point.Double[2];
