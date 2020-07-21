@@ -29,4 +29,8 @@ public class Cloud {
         //System.out.println("Test PerimetroMin: "+perimetro);
         return perimetro;
     }
+
+    public void agregar (Point p){
+        cloud.add(p);
+    }
 }
