@@ -26,10 +26,10 @@ public class Point extends java.awt.Point.Double  {
         return aux;
     }
 
-    //public void setX (double x1){    x = x1;   }
+    public void setX (double x1){    x = x1;   }
 
 
-    //public void setY(double y1){  y = y1;    }
+    public void setY(double y1){  y = y1;    }
 
 
     /*

@@ -28,7 +28,7 @@ public class Parse {
             Matcher mat = pat.matcher("NODE_COORD_SECTION");
             String linea;
             Cloud auxCloud = new Cloud();
-            Point.Double p = new Point.Double();
+            //Point.Double p = new Point.Double();
             while ((linea = br.readLine()) != null) {
                 //System.out.println(mat.matches());
                 if (linea.matches("NODE_COORD_SECTION")) {
@@ -42,24 +42,14 @@ public class Parse {
                              System.out.println("Ciudad: " +ciudad[i]);
                              i++;
                          }
-
-                         //p.setLocation(ciudad[1],ciudad[2]);
-                         p.x = (ciudad[1]);
-                         p.y = (ciudad[2]);
-                         //p.(ciudad[2]);
+                         Point p = new Point();
+                         p.setX(ciudad[1]);
+                         p.setY(ciudad[2]);
                          auxCloud.cloud.add(p);
-                         p.x = -1;
-                         p.y = -1;
-
-
                     }
                 }
             }
-            //auxCloud.cloud;
             return auxCloud.cloud;
-            //if (mat.matches()) {
-
-
 
         }catch (IOException ex){
             ex.printStackTrace();

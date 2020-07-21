@@ -1,5 +1,9 @@
 package TrioPuntos;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -28,6 +32,53 @@ public class Algoritmos {
         Point.Double pj = new Point();
         Point.Double pk = new Point();
         double pmin = 999;
+        //FileWriter fw_exhaustivo = null;
+        BufferedWriter bw_exhaustivo = null;
+        try {
+            File exh = new File("exhaustivo.dat");
+            bw_exhaustivo = new BufferedWriter(new FileWriter(exh));
+            double tiempo = 0;
+            for(int i = 0; i < nube.size(); i++){
+                Instant finish = Instant.now();
+                long timeExh = Duration.between(start,finish).toMillis();
+                //exh = i+" "+timeExh+"\n";
+                bw_exhaustivo.write(i+" "+timeExh+"\n");
+                //bw_exhaustivo.newLine();
+                for(int j = i + 1; j < nube.size(); j++){
+                    for(int k = j + 1; k < nube.size(); k++){
+                        //tiempo = auxCloud.perimetroMin(nube.get(i),nube.get(j), nube.get(k));
+                        System.out.println("--------------------");
+                        System.out.println("Pmin Calculado:"+auxCloud.perimetroMin(nube.get(i),nube.get(j), nube.get(k)));
+                        System.out.println("Pminimo: "+pmin);
+                        if(auxCloud.perimetroMin(nube.get(i),nube.get(j), nube.get(k)) < pmin ){
+                            pmin = auxCloud.perimetroMin(nube.get(i),nube.get(j), nube.get(k));
+                            pi = nube.get(i);
+                            pj = nube.get(j);
+                            pk = nube.get(k);
+                        }
+
+                    }
+                }
+            }
+            bw_exhaustivo.close();
+            Instant finish = Instant.now();
+            Point fr = new Point();
+            distaaux = fr.distanciaEuclidea(pi,pj);
+            System.out.println("Perimetro minimo: "+pmin);
+            System.out.println(pi);
+            System.out.println(pj);
+            System.out.println(pk);
+            long timeElapsed = Duration.between(start,finish).toMillis();
+            System.out.println("Time Elapsed: " +timeElapsed+ "ms");
+            //return pmin;
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return pmin;
+        /*
         for(int i = 0; i < nube.size(); i++){
             for(int j = i + 1; j < nube.size(); j++){
                 for(int k = j + 1; k < nube.size(); k++){
@@ -43,6 +94,7 @@ public class Algoritmos {
                 }
             }
         }
+
         Instant finish = Instant.now();
         Point fr = new Point();
         distaaux = fr.distanciaEuclidea(pi,pj);
@@ -53,6 +105,8 @@ public class Algoritmos {
         long timeElapsed = Duration.between(start,finish).toMillis();
         System.out.println("Time Elapsed: " +timeElapsed+ "ms");
         return pmin;
+
+         */
     }
 
 
