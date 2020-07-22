@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class main {
 
-    public static void main (String[] args){
+    public static void main (String[] args) throws IOException {
         Cloud nube = new Cloud();
         /*
         TrioPuntos.Cloud sizes to test:
@@ -18,7 +18,7 @@ public class main {
 
          */
 
-        nube.fillCloud(10);
+        nube.fillCloud(100);
         nube.showCloud();
         System.out.println("Size:" +nube.cloud.size());
         TrioPuntos.Algoritmos alg = new TrioPuntos.Algoritmos();

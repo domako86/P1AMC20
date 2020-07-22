@@ -110,8 +110,11 @@ public class Algoritmos {
     }
 
 
-    public double divideVenceras(ArrayList<Point.Double> nube){
+    public double divideVenceras(ArrayList<Point.Double> nube) throws IOException{
         Instant startHeap = Instant.now();
+        File dyv = new File("dyv.dat");
+        BufferedWriter bw_dyv = null;
+        bw_dyv = new BufferedWriter(new FileWriter(dyv));
         HeapSort heap = new HeapSort();
         ArrayList<Point.Double> sorted = new ArrayList<>();
         sorted = heap.heapSort(nube);
@@ -131,11 +134,15 @@ public class Algoritmos {
 
         ArrayList<Point.Double> nubeIzq = new ArrayList<>(sorted.subList(0,centro));
         ArrayList<Point.Double> nubeDcha = new ArrayList<>(sorted.subList(centro, sorted.size()));
-
+        int j = 0;
+        Instant finishDivide = Instant.now();
+        long timeDyV = Duration.between(startDyV,finishDivide).toMillis();
+        bw_dyv.write(j+" "+timeDyV+"\n");
         if(nubeIzq.size() == 3){
             Instant finishDyV = Instant.now();
             long timeElapsedDyV = Duration.between(startDyV,finishDyV).toMillis();
             System.out.println("Time Elapsed DyV Izq: " +timeElapsedDyV+ "ms");
+            bw_dyv.close();
             return auxCloud.perimetroMin(nubeIzq.get(0), nubeIzq.get(1), nubeIzq.get(2));
         }
         else {
@@ -143,6 +150,7 @@ public class Algoritmos {
                 Instant finishDyV = Instant.now();
                 long timeElapsedDyV = Duration.between(startDyV,finishDyV).toMillis();
                 System.out.println("Time Elapsed DyV Dcha: " +timeElapsedDyV+ "ms");
+                bw_dyv.close();
                 return auxCloud.perimetroMin(nubeDcha.get(0), nubeDcha.get(1), nubeDcha.get(2));
             } else {
                 System.out.println("---NubeIzq---");
@@ -157,28 +165,39 @@ public class Algoritmos {
                 //double dist1,dist2,dist3;
                 //dist1 = divideVenceras(nubeIzq);
                 //dist2 = divideVenceras(nubeDcha);
-                double minIzq = exhaustivo(nubeIzq);
-                double distIzq = distaaux;
+                double minIzq = exhaustivo(nubeIzq); //crear version para ficheros dyv? solucionar franja 1º
+                double distIzq = distaaux;  //Fallo no implementado
                 double minDch = exhaustivo(nubeDcha);
-                double distDcha = distaaux;
+                double distDcha = distaaux; //Fallo no implementado
+
+                Instant finishDivide2 = Instant.now();
+                long timeDyV2 = Duration.between(startDyV,finishDivide2).toMillis();
+                bw_dyv.write(j+" "+timeDyV2+"\n");
 
                 System.out.println("Dist Izq: "+distIzq);
                 System.out.println("Dist Dcha: "+distDcha);
                 ArrayList<Point.Double> franjaAux = franja(nube,distIzq,distDcha);
                 double minFranja = exhaustivo(franjaAux);
 
+                Instant finishDivide3 = Instant.now();
+                long timeDyV3 = Duration.between(startDyV,finishDivide3).toMillis();
+                bw_dyv.write(j+" "+timeDyV3+"\n");
+
                 Instant finishDyV = Instant.now();
                 long timeElapsedDyV = Duration.between(startDyV,finishDyV).toMillis();
                 System.out.println("Time Elapsed DyV: " +timeElapsedDyV+ "ms");
 
                 if((minIzq < minDch) && (minIzq < minFranja)){
+                    bw_dyv.close();
                     return minIzq;
                 }
                 else{
                     if(minFranja < minDch){
+                        bw_dyv.close();
                         return minFranja;
                     }
                     else{
+                        bw_dyv.close();
                         return minDch;
                     }
                 }

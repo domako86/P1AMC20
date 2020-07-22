@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class maintsp {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Cloud tspcloud = new Cloud();
         Parse p = new Parse();
         Scanner sc = new Scanner(System.in);
@@ -25,10 +25,10 @@ public class maintsp {
             e.printStackTrace();
         }
         System.out.println("Cloud TSP");
-        tspcloud.showCloud();
+        //tspcloud.showCloud();
         TrioPuntos.Algoritmos alg = new TrioPuntos.Algoritmos();
-        System.out.println("Perimetro min Exhaustivo:" +alg.exhaustivo(tspcloud.cloud));
+        //System.out.println("Perimetro min Exhaustivo:" +alg.exhaustivo(tspcloud.cloud));
         System.out.println("##################################");
-        //System.out.println("Perimetro min DyV:" +alg.divideVenceras(tspcloud.cloud));
+        System.out.println("Perimetro min DyV:" +alg.divideVenceras(tspcloud.cloud));
     }
 }
