@@ -18,7 +18,7 @@ public class main {
 
          */
 
-        nube.fillCloud(100);
+        nube.fillCloud(10);
         nube.showCloud();
         System.out.println("Size:" +nube.cloud.size());
         TrioPuntos.Algoritmos alg = new TrioPuntos.Algoritmos();

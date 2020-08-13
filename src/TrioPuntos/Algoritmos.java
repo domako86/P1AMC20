@@ -13,6 +13,9 @@ public class Algoritmos {
     private Point.Double[] dista1;
     private Point.Double[] dista2;
     private Point.Double[] dista3;
+    //private Point.Double[] coord_i;
+    //private Point.Double[] coord_j;
+    //private Point.Double[] coord_k;
     private double distaaux;
     private Point.Double[] franjaIzq;
     private Point.Double[] franjaDcha;
@@ -166,9 +169,9 @@ public class Algoritmos {
                 //dist1 = divideVenceras(nubeIzq);
                 //dist2 = divideVenceras(nubeDcha);
                 double minIzq = exhaustivo(nubeIzq); //crear version para ficheros dyv? solucionar franja 1º
-                double distIzq = distaaux;  //Fallo no implementado
+                double distIzq = Math.abs(distaaux-centro);  //Fallo no implementado
                 double minDch = exhaustivo(nubeDcha);
-                double distDcha = distaaux; //Fallo no implementado
+                double distDcha = Math.abs(distaaux+centro); //Fallo no implementado
 
                 Instant finishDivide2 = Instant.now();
                 long timeDyV2 = Duration.between(startDyV,finishDivide2).toMillis();
@@ -211,8 +214,14 @@ public class Algoritmos {
         int centro = (nube.size())/ 2;
         System.out.println("Centro = " +centro);
         System.out.println("Math.abs(centro - (int)distIzq) = " +Math.abs(centro - (int)distIzq));
-        System.out.println("Math.abs(centro + (int)distIzq) = " +Math.abs(centro + (int)distIzq));
-        ArrayList<Point.Double> franja = new ArrayList<>(nube.subList(Math.abs(centro - (int)distIzq), Math.abs(centro + (int)distIzq)));
+        System.out.println("Math.abs(centro + (int)distDcha) = " +Math.abs(centro + (int)distDcha));
+        if(distDcha >= nube.size())
+            distDcha = nube.size();
+        else
+            distDcha = Math.abs(centro + (int)distDcha);
+
+        System.out.println("distDcha) = " +distDcha);
+        ArrayList<Point.Double> franja = new ArrayList<>(nube.subList(Math.abs(centro - (int)distIzq), (int)distDcha));
         System.out.println("---FRANJA---");
         for (int i = 0; i < franja.size(); i++)
             System.out.println(franja.get(i));
