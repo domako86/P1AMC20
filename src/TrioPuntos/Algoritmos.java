@@ -9,13 +9,11 @@ import java.time.Instant;
 import java.util.ArrayList;
 
 public class Algoritmos {
-    //private casos caso;
+
     private Point.Double[] dista1;
     private Point.Double[] dista2;
     private Point.Double[] dista3;
-    //private Point.Double[] coord_i;
-    //private Point.Double[] coord_j;
-    //private Point.Double[] coord_k;
+
     private double distaaux;
     private Point.Double[] franjaIzq;
     private Point.Double[] franjaDcha;
@@ -168,10 +166,10 @@ public class Algoritmos {
                 //double dist1,dist2,dist3;
                 //dist1 = divideVenceras(nubeIzq);
                 //dist2 = divideVenceras(nubeDcha);
-                double minIzq = exhaustivo(nubeIzq); //crear version para ficheros dyv? solucionar franja 1º
-                double distIzq = Math.abs(distaaux-centro);  //Fallo no implementado
+                double minIzq = exhaustivo(nubeIzq);
+                double distIzq = Math.abs(distaaux-centro);
                 double minDch = exhaustivo(nubeDcha);
-                double distDcha = Math.abs(distaaux+centro); //Fallo no implementado
+                double distDcha = Math.abs(distaaux+centro);
 
                 Instant finishDivide2 = Instant.now();
                 long timeDyV2 = Duration.between(startDyV,finishDivide2).toMillis();

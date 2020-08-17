@@ -15,7 +15,7 @@ public class Parse {
     FileReader fr;
     BufferedReader br;
 
-    Parse() {
+    public Parse() {
         File archivo = null;
         FileReader fr = null;
         BufferedReader br = null;
