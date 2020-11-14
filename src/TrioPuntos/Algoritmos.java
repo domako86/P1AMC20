@@ -33,6 +33,7 @@ public class Algoritmos {
         Point.Double pj = new Point();
         Point.Double pk = new Point();
         double pmin = 999;
+        double areaMax = 1;
         //FileWriter fw_exhaustivo = null;
         BufferedWriter bw_exhaustivo = null;
         try {
@@ -51,11 +52,23 @@ public class Algoritmos {
                         System.out.println("--------------------");
                         System.out.println("Pmin Calculado:"+auxCloud.perimetroMin(nube.get(i),nube.get(j), nube.get(k)));
                         System.out.println("Pminimo: "+pmin);
-                        if(auxCloud.perimetroMin(nube.get(i),nube.get(j), nube.get(k)) < pmin ){
-                            pmin = auxCloud.perimetroMin(nube.get(i),nube.get(j), nube.get(k));
-                            pi = nube.get(i);
-                            pj = nube.get(j);
-                            pk = nube.get(k);
+                        System.out.println("Area Calculada: "+auxCloud.areaHeron(nube.get(i), nube.get(j), nube.get(k)));
+                        System.out.println("AreaMax: "+areaMax);
+
+                        if((auxCloud.perimetroMin(nube.get(i), nube.get(j), nube.get(k)) <= pmin)){
+                            if((auxCloud.perimetroMin(nube.get(i), nube.get(j), nube.get(k)) == pmin) && (auxCloud.areaHeron(nube.get(i), nube.get(j), nube.get(k)) > areaMax)){
+                                areaMax = auxCloud.areaHeron(nube.get(i), nube.get(j), nube.get(k));
+                            }
+                            else{
+                                pmin = auxCloud.perimetroMin(nube.get(i),nube.get(j), nube.get(k));
+                                pi = nube.get(i);
+                                pj = nube.get(j);
+                                pk = nube.get(k);
+                                areaMax = auxCloud.areaHeron(nube.get(i), nube.get(j), nube.get(k));
+                            }
+
+
+
                         }
 
                     }
@@ -66,6 +79,7 @@ public class Algoritmos {
             Point fr = new Point();
             distaaux = fr.distanciaEuclidea(pi,pj);
             System.out.println("Perimetro minimo: "+pmin);
+            System.out.println("Area: "+areaMax);
             System.out.println(pi);
             System.out.println(pj);
             System.out.println(pk);
@@ -209,6 +223,7 @@ public class Algoritmos {
     }
 
     public ArrayList<Point.Double> franja (ArrayList<Point.Double> nube, double distIzq, double distDcha){
+        System.out.println("******** METODO FRANJA ***********");
         int centro = (nube.size())/ 2;
         System.out.println("Centro = " +centro);
         System.out.println("Math.abs(centro - (int)distIzq) = " +Math.abs(centro - (int)distIzq));
