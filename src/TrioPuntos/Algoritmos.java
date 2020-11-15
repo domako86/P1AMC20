@@ -226,15 +226,22 @@ public class Algoritmos {
         System.out.println("******** METODO FRANJA ***********");
         int centro = (nube.size())/ 2;
         System.out.println("Centro = " +centro);
+        System.out.println("nube.size() = " +nube.size());
+        System.out.println("distIzq = " +distIzq);
+        System.out.println("distDcha = " +distDcha);
         System.out.println("Math.abs(centro - (int)distIzq) = " +Math.abs(centro - (int)distIzq));
         System.out.println("Math.abs(centro + (int)distDcha) = " +Math.abs(centro + (int)distDcha));
+
         if(distDcha >= nube.size())
             distDcha = nube.size();
+        /*
         else
             distDcha = Math.abs(centro + (int)distDcha);
-
+        */
         System.out.println("distDcha) = " +distDcha);
-        ArrayList<Point.Double> franja = new ArrayList<>(nube.subList(Math.abs(centro - (int)distIzq), (int)distDcha));
+        System.out.println("distIzq) = " +distIzq);
+        //ArrayList<Point.Double> franja = new ArrayList<>(nube.subList(Math.abs(centro - (int)distIzq), (int)distDcha));
+        ArrayList<Point.Double> franja = new ArrayList<>(nube.subList(Math.abs((int)distIzq), (int)distDcha));
         System.out.println("---FRANJA---");
         for (int i = 0; i < franja.size(); i++)
             System.out.println(franja.get(i));
