@@ -27,8 +27,8 @@ public class maintsp {
         System.out.println("Cloud TSP");
         //tspcloud.showCloud();
         TrioPuntos.Algoritmos alg = new TrioPuntos.Algoritmos();
-        //System.out.println("Perimetro min Exhaustivo:" +alg.exhaustivo(tspcloud.cloud));
-        System.out.println("############### MAIN TSP ###################");
-        System.out.println("Perimetro min DyV:" +alg.divideVenceras(tspcloud.cloud));
+        System.out.println("Perimetro min Exhaustivo:" +alg.exhaustivo(tspcloud.cloud));
+        //System.out.println("############### MAIN TSP ###################");
+        //System.out.println("Perimetro min DyV:" +alg.divideVenceras(tspcloud.cloud));
     }
 }

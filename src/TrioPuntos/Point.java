@@ -2,6 +2,7 @@ package TrioPuntos;
 
 import java.util.Random;
 
+//import static TrioPuntos.CartesianPanel.*;
 import static java.lang.Math.sqrt;
 
 public class Point extends java.awt.Point.Double  {
