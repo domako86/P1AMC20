@@ -15,7 +15,7 @@ public class maintsp {
         Parse p = new Parse();
         Scanner sc = new Scanner(System.in);
         System.out.println("Ruta fichero TSP: ");
-        //String fichero = sc.nextLine();
+        //String fichero = sc.nextLine();   //Linea comentada para evitar introducir por consola
         String fichero = "burma14.tsp";
 
         try {
@@ -27,8 +27,9 @@ public class maintsp {
         System.out.println("Cloud TSP");
         //tspcloud.showCloud();
         TrioPuntos.Algoritmos alg = new TrioPuntos.Algoritmos();
+
+        /*DESCOMENTAR METODO PARA PROBAR*/
         System.out.println("Perimetro min Exhaustivo:" +alg.exhaustivo(tspcloud.cloud));
-        //System.out.println("############### MAIN TSP ###################");
         //System.out.println("Perimetro min DyV:" +alg.divideVenceras(tspcloud.cloud));
     }
 }

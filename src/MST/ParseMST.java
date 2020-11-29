@@ -58,11 +58,12 @@ public class ParseMST {
         File ciudades = new File("ciudades.dat");
         BufferedWriter bw_ciudades = null;
         bw_ciudades = new BufferedWriter(new FileWriter(ciudades));
-
+        int totalDistancia = 0;
         for (int i = 0; i < mstcloud.cloud.size(); i+=2){
             //double perimetro = 0;
             Point aux = new Point();
-            bw_ciudades.write(i+" "+(i+1)+" "+ aux.distanciaEuclidea(mstcloud.cloud.get(i),mstcloud.cloud.get(i+1))+"\n");
+            bw_ciudades.write(i+"\t"+(i+1)+"\t"+ aux.distanciaEuclidea(mstcloud.cloud.get(i),mstcloud.cloud.get(i+1))+"\n");
+            totalDistancia += aux.distanciaEuclidea(mstcloud.cloud.get(i),mstcloud.cloud.get(i+1));
         }
         /*
         for (int j = 1; j <= mstcloud.cloud.size(); j+=2){
@@ -71,6 +72,7 @@ public class ParseMST {
             bw_ciudades.write(j+" "+(j+1)+" "+ aux.distanciaEuclidea(mstcloud.cloud.get(j),mstcloud.cloud.get(j+1))+"\n");
         }
         */
+        bw_ciudades.write("Total: "+totalDistancia+"\n");
         bw_ciudades.write("EOF");
         bw_ciudades.close();
     }
